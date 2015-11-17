@@ -1,0 +1,9 @@
+README for FilmAnalysis-ScrapingIMDB
+
+An analysis of the top 100 highest-grossing films in the U.S. and Canada.
+
+----
+Main Output
+----
+
+The document includes a Shiny application, so the final document has been published on shinyapps.io: https://eideal.shinyapps.io/FilmAnalysis-ScrapingIMDB
