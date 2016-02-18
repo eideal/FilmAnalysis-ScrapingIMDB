@@ -51,7 +51,7 @@ The TicketsSold and AdjustedGross variables are currently character variables, b
 table$AdjustedGross <- as.numeric(gsub('\\$|,', '', table$AdjustedGross))
 
 # Remove characters from one entry
-table$TicketsSold[14] <- strsplit(table$TicketsSold[14], ' ')[[1]][3]
+table$TicketsSold[15] <- strsplit(table$TicketsSold[15], ' ')[[1]][3]
 
 # Remove commas from TicketsSold and convert to numeric
 table$TicketsSold <- as.numeric(gsub(',', '', table$TicketsSold))
@@ -75,20 +75,23 @@ table$FormatTitle <- gsub('\'', '%27', table$FormatTitle)
 The Wikipedia table data originates from Box Office Mojo, and there are differences between several movie titles and release dates on Box Office Mojo and IMDB. These are handled individually below. This case handling does present issues related to scalability. If we were attempting to do this for e.g. 1000 movies, it would be unreasonable to correct all possible issues by hand. What I could do in this case, is run the code in a try-except structure, so if one film fails, the code will continue.
 
 ```{r}
+# Star Wars: The Force Awakens title to Star Wars: Episode VII - The Force Awakens
+table$FormatTitle[11] <- 'Star%20Wars:%20Episode%20VII%20-%20The%20Force%20Awakens'
+
 # The year for the movie title Fantasia differs on the Wikipedia page - this was a multiple release film
-table$Year[22] <- 1940
+table$Year[23] <- 1940
 
 # Ghostbusters - original title is 'Ghost Busters'
-table$FormatTitle[33] <- 'Ghost%20Busters'
+table$FormatTitle[34] <- 'Ghost%20Busters'
 
 # Around the World in 80 Days written "Eighty"
-table$FormatTitle[48] <- 'Around%20The%20World%20In%20Eighty%20Days'
+table$FormatTitle[49] <- 'Around%20The%20World%20In%20Eighty%20Days'
 
 # National Lampoon's Animal House is called 'Animal House' in IMDB
-table$FormatTitle[59] <- 'Animal%20House'
+table$FormatTitle[60] <- 'Animal%20House'
 
 # M*A*S*H is written MASH in IMDB
-table$FormatTitle[86] <- 'MASH'
+table$FormatTitle[87] <- 'MASH'
 ```
 
 ## Scraping IMDB for Movie Ratings
